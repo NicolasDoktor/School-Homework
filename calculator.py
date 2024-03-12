@@ -34,6 +34,5 @@ def program():
         return
     result(výsledek)
 
-if __name__ == '__main__':
     program()
 #spouští to celý program
