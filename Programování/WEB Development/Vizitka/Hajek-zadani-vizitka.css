@@ -1,0 +1,139 @@
+*{
+  margin: 0;
+  padding: 0;
+
+}
+body{
+  background-color: #9B7EBD;
+
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+
+}
+
+
+
+.card{
+  width: 400px;
+  height: 500px;
+  border-radius: 12px;
+  background-color: #333;
+  border-color: rgb(168, 37, 185);
+  border-width: 2px;
+  border-style: solid;
+  box-shadow: 
+      0 0 10px #E4B1F0,
+      0 0 10px #E4B1F0,
+      0 0 10px #bf78cf,
+      0 0 3px #b70fdd;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+
+
+
+
+.card .title h1{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  padding: 3%;
+}
+
+
+.card .image{
+  display: flex;
+  justify-content:center;
+  margin-top: 3%;
+  margin-bottom: 8%;
+  align-items: center;
+  
+}
+.card .image .outer{
+  background-color: #db9ce9;
+  border-radius: 50%;
+  height: 130px;
+  width: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 
+    0 0 5px #fff,
+    0 0 10px #E4B1F0,
+    0 0 20px #E4B1F0,
+    0 0 1px #E4B1F0,
+    0 0 20px #E4B1F0,
+    0 0 15px #E4B1F0;
+  ;
+}
+.card .image .inner{
+  height: 120px;
+  width: 120px;
+  overflow: hidden;
+  border-radius: 50%;
+  
+}
+.card .image .inner img{
+  width: 100%;
+
+}
+
+.hr{
+  margin-left: 40px;
+  margin-right: 40px;
+  border-color: #b70fdd;
+}
+
+
+.card .email{
+  color: white;
+  font-family: sans-serif;
+  margin-top: 5%;
+  margin-left: 10%;
+}
+
+.card .github{
+  color: white;
+  font-family: sans-serif;
+  margin-top: 5%;
+  margin-left: 10%;
+  
+}
+
+.card .p-number{
+  color: white;
+  font-family: sans-serif;
+  margin-top: 5%;
+  margin-left: 10%;
+  
+}
+
+.card .school{
+  color: white;
+  font-family: sans-serif;
+  margin-top: 8%;
+  margin-left: 10%;
+  
+}
+
+
+.card .details{
+  width: 250px;
+  height: 80px;
+  background-color: #ac3bc5;
+  margin-top: 1%;
+  border-top-right-radius: 200px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 27px;
+  position: absolute;
+  box-shadow: 100px 0px 0px rgba(0, 0, 0, 0.15);
+}
+
