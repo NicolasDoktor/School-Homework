@@ -39,6 +39,7 @@
 }
 
 .container{
+  position: relative;
   display: flex;
   justify-content: center; 
   align-items: center;
@@ -89,7 +90,7 @@
   width: 110px;
   height: 100px;
   border-radius: 50%; 
-  animation: rotate 60s linear infinite, bulk 20s linear infinite;
+  animation: spin 60s linear infinite, bulk 20s linear infinite;
   margin: 10px 0 0 0;
   box-shadow: 0 0 90px 0 rgb(238, 238, 114);
   z-index: 10;
@@ -104,6 +105,7 @@
   border-radius: 50%;
   animation: orbit-mercury 12s linear infinite;
   box-shadow: 0 0 13px 0 rgb(219, 206, 163);
+  background: linear-gradient(90deg, rgb(116, 116, 110), rgb(80, 80, 76), rgb(24, 23, 23));
 }
 
 .venus {
@@ -114,6 +116,7 @@
   border-radius: 50%;
   animation: orbit-venus 20s linear infinite;
   box-shadow: 0 0 15px 0 rgb(230, 180, 43);
+  background: linear-gradient(90deg, rgb(206, 192, 111), rgb(80, 74, 43), rgb(0, 0, 0));
 }
 
 .earth {
@@ -124,31 +127,52 @@
   border-radius: 50%;
   animation: orbit-earth 27s linear infinite;
   box-shadow: 0 0 30px 0 rgb(83, 113, 247);
+  background: linear-gradient(90deg, rgb(100, 167, 230), rgb(35, 63, 90), rgb(0, 0, 0));
 }
+
 
 @keyframes orbit-mercury {
   0% {
-    transform: rotate(0deg) translateX(220px) rotate(0deg);
+    transform: rotate(0deg) translateX(220px) ;
   }
   100% {
-    transform: rotate(360deg) translateX(220px) rotate(-360deg);
+    transform: rotate(360deg) translateX(220px) ;
   }
 }
 
 @keyframes orbit-venus {
   0% {
-    transform: rotate(0deg) translateX(370px) rotate(0deg);
+    transform: rotate(0deg) translateX(370px) ;
   }
   100% {
-    transform: rotate(360deg) translateX(370px) rotate(-360deg);
+    transform: rotate(360deg) translateX(370px) ;
   }
 }
 
 @keyframes orbit-earth {
   0% {
-    transform: rotate(0deg) translateX(300px) rotate(0deg);
+    transform: rotate(0deg) translateX(300px) ;
   }
   100% {
-    transform: rotate(360deg) translateX(300px) rotate(-360deg);
+    transform: rotate(360deg) translateX(300px) ;
   }
+}
+
+.star-1, .star-2, .star-3{
+  position: absolute;
+  background-color: white;
+  width: 2px;
+  height: 2px;
+}
+.star-1{
+  top: 300px;
+  left: 330px;
+}
+.star-2{
+  top: 750px;
+  left: 600px;
+}
+.star-3{
+  top: 300px;
+  right: 400px;
 }
