@@ -9,10 +9,10 @@ Tento firemní web slouží jako prezentace, jejích služeb, kontaktních infor
 Žádná z Osobních informací není realná, všechny jsou vymyšlené.
 
 
-![alt text](image.png)
+![alt text](Header-Desktop.png)
 
-![alt text](image-1.png)
+![alt text](Footer-Desktop.png)
 
-![alt text](image.png)
+![alt text](Header-Phone.png)
 
-![alt text](image.png)
+![alt text](Footer-Phone.png)
