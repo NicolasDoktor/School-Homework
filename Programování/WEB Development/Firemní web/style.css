@@ -1,0 +1,177 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.8;
+  color: #333;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+header {
+  background: linear-gradient(135deg, #004d99, #002966);
+  padding: 10px ;
+  text-align: center;
+  color: white;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+header img {
+  width: 250px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+
+section {
+  background-color: #fff;
+  margin: 25px 0;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+section h2 {
+  color: #df0000;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+  text-align: center;
+  position: relative;
+}
+
+section h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #df0000;
+  margin: 10px auto ;
+}
+
+section ul {
+  list-style-type: none;
+}
+
+section ul li {
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+
+
+section ul li::before {
+  content: '•';
+  color: #df0000;
+  font-weight: bold;
+  display: inline-block;
+  width: 1rem;
+  margin-left: -1rem;
+}
+
+
+#Kontakty ul li {
+  font-weight: bold;
+  color: #004d99;
+  
+}
+
+#Kontakty ul li a{
+  color: #df0000;
+}
+
+#Kontakty ul li i:hover {
+  transform: scale(1.2);
+}
+
+#Reference{
+  text-align: center;
+  
+}
+
+#Reference img{
+  width: 600px;
+  height: auto;
+  padding: 25px;
+}
+
+
+footer {
+  text-align: center;
+  padding: 30px;
+  background: linear-gradient(135deg, #990000, #660000);
+  color: white;
+  margin-top: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+footer p {
+  margin-bottom: 15px;
+  font-size: 1.1em;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-links a {
+  color: white;
+  font-size: 1.8em;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #0029dd;
+  transform: scale(1.2);
+}
+
+
+
+
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  header, section, footer {
+    padding: 15px;
+  }
+
+  header img {
+    width: 80%;
+  }
+
+  section h2 {
+    font-size: 1.5em;
+  }
+
+  section ul li {
+    font-size: 1em;
+  }
+
+  .social-links a {
+    font-size: 1.5em;
+  }
+
+  #Reference img {
+    padding: 15px;
+    width: 90%;
+  
+}
+}
