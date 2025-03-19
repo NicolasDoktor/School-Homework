@@ -107,15 +107,7 @@ section{
     
 }
 
-@media (max-width: 1024px){
-    
-    section{
-        font-size: 130%;
-    }
-    main h1{
-        font-size: 130%;
-    }
-}
+
 @media (max-width: 768px){
     nav ul li{
         display: none;
