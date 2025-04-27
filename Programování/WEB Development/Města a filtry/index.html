@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ukázka filtrování dat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Ukázka filtrování dat</h1>
+
+    
+
+    <section id="tabulka">
+        <h2>Tabulka měst</h2>
+        <table id="mestaTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Město<br>
+                        <input type="text" id="filterMesto" placeholder="Filtrovat město...">
+                    </th>
+                    <th>Počet obyvatel</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Praha</td><td>1300000</td></tr>
+                <tr><td>2</td><td>Brno</td><td>380000</td></tr>
+                <tr><td>3</td><td>Ostrava</td><td>290000</td></tr>
+                <tr><td>4</td><td>Plzeň</td><td>175000</td></tr>
+                <tr><td>5</td><td>Liberec</td><td>105000</td></tr>
+                <tr><td>6</td><td>Olomouc</td><td>100000</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="formular">
+        <h2>Formulář výběru města</h2>
+        <form id="mestoForm">
+            <input type="text" id="filterSelect" placeholder="Filtrovat výběr..." /><br><br>
+            <select id="mestoSelect" size="6">
+                <option>Praha</option>
+                <option>Brno</option>
+                <option>Ostrava</option>
+                <option>Plzeň</option>
+                <option>Liberec</option>
+                <option>Olomouc</option>
+            </select><br><br>
+            <button type="submit">Odeslat</button>
+        </form>
+    </section>
+
+    <script>
+       
+        document.getElementById('filterMesto').addEventListener('input', function() {
+            const filter = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#mestaTable tbody tr');
+
+            rows.forEach(row => {
+                const city = row.cells[1].textContent.toLowerCase();
+                row.style.display = city.includes(filter) ? '' : 'none';
+            });
+        });
+
+        
+        const originalOptions = Array.from(document.querySelectorAll('#mestoSelect option'));
+
+        document.getElementById('filterSelect').addEventListener('input', function() {
+            const filter = this.value.toLowerCase();
+            const select = document.getElementById('mestoSelect');
+            select.innerHTML = '';
+
+            originalOptions.forEach(option => {
+                if (option.textContent.toLowerCase().includes(filter)) {
+                    select.appendChild(option.cloneNode(true));
+                }
+            });
+
+            if (filter === '') {
+                originalOptions.forEach(option => select.appendChild(option.cloneNode(true)));
+            }
+        });
+
+        
+        document.getElementById('mestoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const selectedCity = document.getElementById('mestoSelect').value;
+            alert('Vybrali jste: ' + selectedCity);
+        });
+    </script>
+</body>
+</html>
