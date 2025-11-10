@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudá a lichá</title>
+    <style>
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: #646464;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: rgb(218, 218, 218);
+        }
+
+        form {
+            background-color: rgb(240, 240, 240);
+            padding: 20px 50px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            font-size: 16px;
+            margin-right: 10px;
+            width: 150px;
+        }
+
+        button {
+            padding: 8px 15px;
+            font-size: 16px;
+            background-color: #4c4eaf;
+            border: none;
+            color: rgb(255, 255, 255);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #454ba0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Zkontroluj, zda je číslo sudé nebo liché</h1>
+
+    <form id="cisloForm">
+        <label for="cislo">Zadej celé kladné číslo: </label>
+        <input type="text" id="cislo" name="cislo" placeholder="">
+        <button type="submit">Zkontrolovat</button>
+    </form>
+
+    <script>
+        document.getElementById("cisloForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let vstup = document.getElementById("cislo").value.trim();
+            let cislo = Number(vstup);
+
+            // Ověření vstupu
+            if (vstup === "" || isNaN(cislo) || !Number.isInteger(cislo) || cislo <= 0) {
+                alert("Prosím, zadej platné celé kladné číslo!");
+                return;
+            }
+
+            
+            if (cislo % 2 === 0) {
+                alert("Číslo je sudé.");
+            } else {
+                alert("Číslo je liché.");
+            }
+        });
+    </script>
+
+</body>
+</html>
