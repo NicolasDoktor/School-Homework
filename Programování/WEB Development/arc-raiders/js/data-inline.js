@@ -1,15 +1,15 @@
-// ============================================
-// INLINE DATA - Pro použití bez serveru
-// ============================================
+// ARC RAIDERS - Data načítání
+// Jednoduchý kód pro načtení tříd a novinek
 
-const INLINE_CLASSES = [
+// Data pro herní třídy
+var classesData = [
     {
         "id": 1,
         "name": "Assault",
-        "description": "Heavy frontline warrior specialized in direct combat. Equipped with advanced armor and powerful weapons, the Assault class excels at taking and dealing massive damage in close to medium range engagements.",
+        "description": "Těžký frontový bojovník specializovaný na přímý boj. Vybaven pokročilým pancířem a silnými zbraněmi, třída Assault vyniká v boji na krátkou až střední vzdálenost.",
         "image": "images/assault-class.png",
         "role": "Tank/DPS",
-        "difficulty": "Medium",
+        "difficulty": "Střední",
         "abilities": [
             "Heavy Armor Plating",
             "Suppressive Fire",
@@ -26,10 +26,10 @@ const INLINE_CLASSES = [
     {
         "id": 2,
         "name": "Scout",
-        "description": "Agile reconnaissance specialist with superior mobility and precision. Masters of long-range combat and stealth tactics, Scouts provide critical intelligence and eliminate high-value targets from distance.",
+        "description": "Agilní průzkumník s vyšší mobilitou a přesností. Mistři v boji na dlouhou vzdálenost a skrytých taktikách.",
         "image": "images/scout-class.png",
         "role": "DPS/Recon",
-        "difficulty": "Hard",
+        "difficulty": "Těžká",
         "abilities": [
             "Active Camouflage",
             "Precision Shot",
@@ -46,10 +46,10 @@ const INLINE_CLASSES = [
     {
         "id": 3,
         "name": "Support",
-        "description": "Vital team member focused on healing and tactical support. Equipped with advanced medical technology and defensive systems, Support class keeps the team alive and operational in the harshest conditions.",
+        "description": "Důležitý člen týmu zaměřený na léčení a taktickou podporu. Vybaven pokročilou medicínskou technologií.",
         "image": "images/support-class.png",
         "role": "Healer/Support",
-        "difficulty": "Easy",
+        "difficulty": "Lehká",
         "abilities": [
             "Healing Field",
             "Shield Generator",
@@ -66,10 +66,10 @@ const INLINE_CLASSES = [
     {
         "id": 4,
         "name": "Engineer",
-        "description": "Technical specialist capable of deploying automated defenses and hacking enemy systems. Engineers control the battlefield through strategic placement of turrets, traps, and electronic warfare.",
+        "description": "Technický specialista schopný rozmístit automatickou obranu a hackovat nepřátelské systémy.",
         "image": "images/assault-class.png",
         "role": "Support/Control",
-        "difficulty": "Medium",
+        "difficulty": "Střední",
         "abilities": [
             "Auto-Turret Deploy",
             "EMP Blast",
@@ -85,214 +85,176 @@ const INLINE_CLASSES = [
     }
 ];
 
-const INLINE_NEWS = [
+// Data pro novinky
+var newsData = [
     {
         "id": 1,
         "date": "2025-12-05",
-        "title": "Major Update 2.0 - New Class System",
+        "title": "Velká Aktualizace 2.0 - Nový Systém Tříd",
         "category": "Update",
-        "excerpt": "Introducing the completely revamped class system with four distinct playstyles. Each class now features unique abilities, customizable loadouts, and specialized skill trees. Balance changes across all weapons and equipment."
+        "excerpt": "Představujeme kompletně přepracovaný systém tříd se čtyřmi odlišnými herními styly. Každá třída má nyní unikátní schopnosti a vylepšení."
     },
     {
         "id": 2,
         "date": "2025-11-28",
-        "title": "Patch Notes 1.8.5 - Performance Improvements",
+        "title": "Patch Notes 1.8.5 - Vylepšení Výkonu",
         "category": "Patch",
-        "excerpt": "Significant performance optimizations reducing loading times by 40%. Fixed critical bugs affecting multiplayer stability. Improved AI behavior for robotic enemies. Various quality-of-life improvements based on community feedback."
+        "excerpt": "Významné optimalizace výkonu snižující doba načítání o 40%. Opravené kritické chyby ovlivňující stabilitu multiplayeru."
     },
     {
         "id": 3,
         "date": "2025-11-20",
-        "title": "New Map: Industrial Wasteland",
+        "title": "Nová Mapa: Průmyslová Pustina",
         "category": "Content",
-        "excerpt": "Explore the ruins of a massive industrial complex overrun by hostile machines. Features vertical gameplay, destructible environments, and new mission types. Available now for all players."
+        "excerpt": "Prozkoumejte ruiny masivního průmyslového komplexu přeběhlého nepřátelskými stroji. K dispozici nyní pro všechny hráče."
     },
     {
         "id": 4,
         "date": "2025-11-15",
-        "title": "Community Event: Robot Uprising",
+        "title": "Komunitní Event: Robot Uprising",
         "category": "Event",
-        "excerpt": "Join forces with players worldwide in our biggest community event yet. Defend key locations against waves of increasingly difficult robotic enemies. Exclusive rewards for top performers and participants."
+        "excerpt": "Spojte síly s hráči po celém světě v našem největším komunitním eventu. Exkluzivní odměny pro nejlepší hráče."
     },
     {
         "id": 5,
         "date": "2025-11-08",
-        "title": "Developer Diary: The Future of ARC Raiders",
+        "title": "Vývojářský Deník: Budoucnost ARC Raiders",
         "category": "News",
-        "excerpt": "Our development team shares insights into upcoming features, including new enemy types, expanded crafting system, and the highly anticipated PvPvE mode. Plus a sneak peek at Year 2 content roadmap."
+        "excerpt": "Náš vývojový tým sdílí informace o připravovaných funkcích, včetně nových typů nepřátel a vylepšeného crafting systému."
     },
     {
         "id": 6,
         "date": "2025-11-01",
-        "title": "Weapon Balance Update",
+        "title": "Aktualizace Vyvážení Zbraní",
         "category": "Patch",
-        "excerpt": "Comprehensive weapon balance pass addressing community concerns. Assault rifles buffed, sniper rifles adjusted for better long-range viability. Full patch notes available on our official forums."
+        "excerpt": "Komplexní vyrovnání zbraní řešící obavy komunity. Assault rifles vylepšeny, sniper rifles upraveny pro lepší použití na dlouhou vzdálenost."
     }
 ];
 
-// ============================================
-// DATA LOADING - Použije inline data
-// ============================================
+// Načtení herních tříd
+function nactiTridy() {
+    var classesGrid = document.getElementById('classesGrid');
 
-/**
- * Load and render character classes
- */
-function loadClasses() {
-    const classesGrid = document.getElementById('classesGrid');
-
-    try {
-        const classes = INLINE_CLASSES;
-
-        classesGrid.innerHTML = classes.map(classData => `
-            <div class="class-card reveal">
-                <img src="${classData.image}" alt="${classData.name}" class="class-image">
-                <div class="class-info">
-                    <h3 class="class-name">${classData.name}</h3>
-                    <p class="class-description">${classData.description}</p>
-                    
-                    <div class="class-stats">
-                        <span class="stat-badge">Role: ${classData.role}</span>
-                        <span class="stat-badge">Obtížnost: ${classData.difficulty}</span>
-                    </div>
-                    
-                    <div class="mt-1">
-                        <strong style="color: var(--color-accent-cyan);">Schopnosti:</strong>
-                        <ul style="margin-top: 0.5rem; padding-left: 1.5rem; color: var(--color-text-secondary);">
-                            ${classData.abilities.map(ability => `<li>${ability}</li>`).join('')}
-                        </ul>
-                    </div>
-                    
-                    <div class="mt-1">
-                        <strong style="color: var(--color-accent-cyan);">Statistiky:</strong>
-                        <div style="margin-top: 0.5rem;">
-                            ${renderStatBar('Health', classData.stats.health)}
-                            ${renderStatBar('Damage', classData.stats.damage)}
-                            ${renderStatBar('Mobility', classData.stats.mobility)}
-                            ${renderStatBar('Utility', classData.stats.utility)}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `).join('');
-
-        // Trigger reveal animations
-        setTimeout(revealElements, 100);
-
-    } catch (error) {
-        console.error('Error loading classes:', error);
-        classesGrid.innerHTML = '<p class="text-center">Chyba při načítání tříd.</p>';
+    if (!classesGrid) {
+        return;
     }
-}
 
-/**
- * Render a stat bar
- * @param {string} label - Stat label
- * @param {number} value - Stat value (0-100)
- * @returns {string} - HTML for stat bar
- */
-function renderStatBar(label, value) {
-    return `
-        <div style="margin-bottom: 0.5rem;">
-            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
-                <span style="font-size: 0.9rem; color: var(--color-text-muted);">${label}</span>
-                <span style="font-size: 0.9rem; color: var(--color-accent-cyan);">${value}</span>
-            </div>
-            <div style="width: 100%; height: 6px; background: var(--color-bg-tertiary); border-radius: 3px; overflow: hidden;">
-                <div style="width: ${value}%; height: 100%; background: var(--gradient-primary); transition: width 1s ease;"></div>
-            </div>
-        </div>
-    `;
-}
+    var html = '';
 
-/**
- * Load and render news articles
- */
-function loadNews() {
-    const newsGrid = document.getElementById('newsGrid');
+    for (var i = 0; i < classesData.length; i++) {
+        var trida = classesData[i];
 
-    try {
-        const news = INLINE_NEWS;
-
-        newsGrid.innerHTML = news.map(article => `
-            <div class="news-card reveal">
-                <p class="news-date">${formatDate(article.date)} • ${article.category}</p>
-                <h3 class="news-title">${article.title}</h3>
-                <p class="news-excerpt">${article.excerpt}</p>
-            </div>
-        `).join('');
-
-        // Trigger reveal animations
-        setTimeout(revealElements, 100);
-
-    } catch (error) {
-        console.error('Error loading news:', error);
-        newsGrid.innerHTML = '<p class="text-center">Chyba při načítání novinek.</p>';
-    }
-}
-
-/**
- * Format date to Czech locale
- * @param {string} dateString - ISO date string
- * @returns {string} - Formatted date
- */
-function formatDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('cs-CZ', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
-}
-
-/**
- * Reveal elements with scroll animation
- */
-function revealElements() {
-    const reveals = document.querySelectorAll('.reveal');
-
-    reveals.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-
-        if (elementTop < window.innerHeight - elementVisible) {
-            element.classList.add('active');
+        // Vytvoření HTML pro schopnosti
+        var schopnostiHtml = '';
+        for (var j = 0; j < trida.abilities.length; j++) {
+            schopnostiHtml += '<li>' + trida.abilities[j] + '</li>';
         }
-    });
+
+        // Vytvoření HTML pro statistiky
+        var statsHtml = '';
+        statsHtml += vytvorStatBar('Health', trida.stats.health);
+        statsHtml += vytvorStatBar('Damage', trida.stats.damage);
+        statsHtml += vytvorStatBar('Mobility', trida.stats.mobility);
+        statsHtml += vytvorStatBar('Utility', trida.stats.utility);
+
+        // Vytvoření celé karty
+        html += '<div class="class-card reveal">';
+        html += '  <img src="' + trida.image + '" alt="' + trida.name + '" class="class-image">';
+        html += '  <div class="class-info">';
+        html += '    <h3 class="class-name">' + trida.name + '</h3>';
+        html += '    <p class="class-description">' + trida.description + '</p>';
+        html += '    <div class="class-stats">';
+        html += '      <span class="stat-badge">Role: ' + trida.role + '</span>';
+        html += '      <span class="stat-badge">Obtížnost: ' + trida.difficulty + '</span>';
+        html += '    </div>';
+        html += '    <div class="mt-1">';
+        html += '      <strong>Schopnosti:</strong>';
+        html += '      <ul>' + schopnostiHtml + '</ul>';
+        html += '    </div>';
+        html += '    <div class="mt-1">';
+        html += '      <strong>Statistiky:</strong>';
+        html += '      <div style="margin-top: 10px;">' + statsHtml + '</div>';
+        html += '    </div>';
+        html += '  </div>';
+        html += '</div>';
+    }
+
+    classesGrid.innerHTML = html;
 }
 
-/**
- * Submit contact form
- * @param {Event} event - Form submit event
- */
-function submitContactForm(event) {
+// Vytvoření progress baru pro statistiky
+function vytvorStatBar(nazev, hodnota) {
+    var html = '';
+    html += '<div style="margin-bottom: 10px;">';
+    html += '  <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">';
+    html += '    <span style="font-size: 14px; color: #94a3b8;">' + nazev + '</span>';
+    html += '    <span style="font-size: 14px; color: #00d9ff;">' + hodnota + '</span>';
+    html += '  </div>';
+    html += '  <div style="width: 100%; height: 6px; background: #1a1f2e; border-radius: 3px; overflow: hidden;">';
+    html += '    <div style="width: ' + hodnota + '%; height: 100%; background: linear-gradient(135deg, #00d9ff 0%, #a855f7 100%);"></div>';
+    html += '  </div>';
+    html += '</div>';
+    return html;
+}
+
+// Načtení novinek
+function nactiNovinky() {
+    var newsGrid = document.getElementById('newsGrid');
+
+    if (!newsGrid) {
+        return;
+    }
+
+    var html = '';
+
+    for (var i = 0; i < newsData.length; i++) {
+        var novinka = newsData[i];
+
+        // Formátování data
+        var datum = new Date(novinka.date);
+        var formatovaneDatum = datum.toLocaleDateString('cs-CZ', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        // Vytvoření karty novinky
+        html += '<div class="news-card reveal">';
+        html += '  <p class="news-date">' + formatovaneDatum + ' • ' + novinka.category + '</p>';
+        html += '  <h3 class="news-title">' + novinka.title + '</h3>';
+        html += '  <p class="news-excerpt">' + novinka.excerpt + '</p>';
+        html += '</div>';
+    }
+
+    newsGrid.innerHTML = html;
+}
+
+// Odeslání kontaktního formuláře
+function odeslatFormular(event) {
     event.preventDefault();
 
-    const form = event.target;
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
+    var jmeno = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var predmet = document.getElementById('subject').value;
+    var zprava = document.getElementById('message').value;
 
-    console.log('Form submitted:', data);
+    alert('Zpráva odeslána (demo režim)\n\nJméno: ' + jmeno + '\nEmail: ' + email + '\nPředmět: ' + predmet);
 
-    // Show success message
-    alert('Zpráva byla odeslána (demo režim).\n\nOdeslaná data:\n' + JSON.stringify(data, null, 2));
-    form.reset();
+    document.getElementById('contactForm').reset();
 }
 
-// ============================================
-// INITIALIZATION
-// ============================================
+// Spuštění při načtení stránky
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('Načítání dat ARC Raiders...');
 
-// Load data when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('🚀 Loading ARC Raiders data...');
-    loadClasses();
-    loadNews();
+    nactiTridy();
+    nactiNovinky();
 
-    // Setup contact form
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', submitContactForm);
+    // Připojení formuláře
+    var form = document.getElementById('contactForm');
+    if (form) {
+        form.addEventListener('submit', odeslatFormular);
     }
 
-    console.log('✅ Data loaded successfully!');
+    console.log('Data úspěšně načtena!');
 });
