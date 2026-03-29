@@ -27,3 +27,7 @@
 ### 3. PC1 - ping na PC4
 ![PC1-Ping-PC4](image-3.png)
 
+---
+
+### 4. LAN
+![alt text](image-4.png)
