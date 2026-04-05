@@ -79,3 +79,27 @@ class EthFrame(PDU):
     def corruptData(self):
         self._payload = "ERROR_CORRUPTED"
         self._fcs = 999999999
+
+#UKÁZKA POUŽITÍ
+
+if __name__ == "__main__":
+    print("1. Vytvářím testovací rámec...")
+    frame = EthFrame(dmac="AA:BB:CC:DD:EE:FF", smac="11:22:33:44:55:66", type=0x0800, payload="Ahoj síti!")
+    
+    print("\nVypsání toString:")
+    print(frame)
+    print(f"Původní hash: {frame.fcs}")
+    print(f"Je rámec validní? -> {frame.isValid()}")
+    
+    print("\n--------------------------")
+    print("2. Bezpečná úprava MAC adresy Get/Settery:")
+    frame.dmac = "00:00:00:00:00:00"
+    print(f"Nový přepočítaný hash: {frame.fcs}")
+    print(f"Je rámec po modifikaci validní? -> {frame.isValid()}")
+    
+    print("\n--------------------------")
+    print("3. Simulace hrubého zničení (Corrupted Data):")
+    frame.corruptData()
+    print(frame)
+    print(f"Zničený hash zachycený patičkou: {frame.fcs}")
+    print(f"Je rámec nyní platný? -> {frame.isValid()}")
