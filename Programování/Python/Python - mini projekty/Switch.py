@@ -63,3 +63,19 @@ class EthFrame(PDU):
 
     @property
     def fcs(self) -> int: return self._fcs
+
+    def calculateFcs(self) -> int:
+        return sum(ord(c) for c in f"{self._dmac}{self._smac}{self._type}{self.payload}")
+
+    def _recalculateFcs(self):
+        self._fcs = self.calculateFcs()
+
+    def isValid(self) -> bool:
+        return self._fcs == self.calculateFcs()
+
+    def __str__(self) -> str:
+        return f"[EthFrame] SRC: {self._smac} DST: {self._dmac} DATA: {self.payload}"
+
+    def corruptData(self):
+        self._payload = "ERROR_CORRUPTED"
+        self._fcs = 999999999
