@@ -30,3 +30,36 @@ class EthFrame(PDU):
         self._type = type
         self._fcs = fcs if fcs is not None else self.calculateFcs()
 
+    @staticmethod
+    def isValidMac(mac: str) -> bool:
+        return bool(re.match(r'^([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}$', mac))
+
+    @property
+    def dmac(self) -> str: return self._dmac
+    @dmac.setter
+    def dmac(self, val: str):
+        if not self.isValidMac(val): raise ValueError("Neplatný formát MAC.")
+        self._dmac = val; self._recalculateFcs()
+
+    @property
+    def smac(self) -> str: return self._smac
+    @smac.setter
+    def smac(self, val: str):
+        if not self.isValidMac(val): raise ValueError("Neplatný formát MAC.")
+        self._smac = val; self._recalculateFcs()
+
+    @property
+    def type(self) -> int: return self._type
+    @type.setter
+    def type(self, val: int):
+        self._type = val; self._recalculateFcs()
+
+    @property
+    def payload(self) -> str: return super().payload
+    @payload.setter
+    def payload(self, val: str):
+        self._payload = val
+        self._recalculateFcs()
+
+    @property
+    def fcs(self) -> int: return self._fcs
